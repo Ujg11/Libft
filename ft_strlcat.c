@@ -22,7 +22,7 @@ size_t ft_strlcat(char *dst, const char *src, size_t size)
     dst[j] = '\0';
     return (src_len + dst_len);
 }
-
+/*
 int main (void)
 {
     char src[] = "Hola que tal va, ";
@@ -33,4 +33,4 @@ int main (void)
     printf("Cadena de origen: %s\nCadena de destino: %s\n", src, dst);
     printf("Llargada %d\n\n", llargada);
     return (0);
-}
+}*/
