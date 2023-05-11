@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 19:13:16 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/05/11 19:48:21 by ojimenez         ###   ########.fr       */
+/*   Created: 2023/05/10 11:40:44 by ojimenez          #+#    #+#             */
+/*   Updated: 2023/05/10 11:41:20 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-void	*ft_calloc(size_t count, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*bloque;
+	char	*sub;
 	size_t	i;
 
-	i = count * size;
-	bloque = malloc(count * size);
-	if (!bloque)
+	i = 0;
+	if (!s)
 		return (NULL);
-	else
+	if (start > ft_strlen(s) + 1)
+		return (NULL);
+	sub = (char *)malloc(len * sizeof(char));
+	while (s[start + i] != '\0' && i < len)
 	{
-		ft_bzero(bloque, count * size);
-		return (bloque);
+		sub[i] = s[start + i];
+		i++;
 	}
+	sub[i] = '\0';
+	return (sub);
 }
 /*
 int main(void)
 {
-	int *b;
-	int tamany = 5;
-	int i;
+	const char s[] = "Hola que tal va";
+	char *subcadena;
+	unsigned int start = 5;
+	size_t len = 6;
 
-	i = tamany * sizeof(int);
-	b = (int *)calloc(tamany, sizeof(int));
-	while (i > 0)
-	{
-		printf("%d ", b[i]);
-		i--;
-	}
-	free(b);
+	subcadena = ft_substr(s, start, len);
+	printf("Cadena principal: %s\n", s);
+	printf("Subcadena: %s\n", subcadena);
 	return (0);
 }*/
