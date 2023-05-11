@@ -1,31 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/10 10:55:03 by ojimenez          #+#    #+#             */
+/*   Updated: 2023/05/10 15:23:29 by ojimenez         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdio.h>
 #include <string.h>
 
-void *ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-    size_t i;
-    int len_max;
+	size_t	i;
 
-    i = 0;
-    len_max = src - dest - 1;
-    if (dest > src)
-    {
-        while (i < n)
-        {
-            *((char *)dest + i) = *((char *)src + i);
-            i++;
-        }
-    }
-    else
-    {
-        while (i < n && i < len_max)
-        {
-            *((char *)dest + i) = *((char *)src + i);
-            i++;
-        }
-    }
-    return (dest);
+	i = 0;
+	if (!dest && !src)
+		return (NULL);
+	if (!n || dest == src)
+		return (dest);
+	if (dest > src)
+	{
+		while (n--)
+		{
+			*((char *)dest + n) = *((char *)src + n);
+		}
+	}
+	else
+	{
+		while (i < n)
+		{
+			*((char *)dest + i) = *((char *)src + i);
+			i++;
+		}
+	}
+	return (dest);
 }
 /*
 int main(void)
