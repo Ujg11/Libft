@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static size_t	cont_words(char *s, char c)
 {
@@ -67,29 +68,31 @@ static char	**intro_words(char **split, char *s, char c)
 	while (s[i])
 	{
 		con = cont_letters(s, c, i);
-		split[j] = (char *)malloc(con * sizeof(char));
+		split[j] = (char *)malloc((con + 1) * sizeof(char));
 		if (!split[j])
 		{
 			while (j > 0)
-			{
 				free(split[--j]);
-				return (NULL);
-			}
+			free(split);
+			return (NULL);
 		}
-		while (con > 0)
+		if (con > 0)
 		{
-			if (s[i] != c)
-				split[j][k++] = s[i];
-			if (s[i] == c)
+			while (con > 0)
 			{
-				split[j++][k] = '\0';
-				k = 0;
+				if (s[i] != c)
+					split[j][k++] = s[i];
+				i++;
+				con--;
 			}
-			i++;
-			con--;
+			split[j][k] = '\0';
+			j++;
+			k = 0;
 		}
+		else
+			i++;
 	}
-	split[j + 1]= NULL;
+	split[j] = NULL;
 	return (split);
 }
 
@@ -106,7 +109,7 @@ char	**ft_split(char const *s, char c)
 	split = create_split(str, c, cont);
 	if (!split)
 		return (NULL);
-	split = intro_words(split, s, c);
+	split = intro_words(split, str, c);
 	if (!split)
 	{
 		free(split);
@@ -114,4 +117,34 @@ char	**ft_split(char const *s, char c)
 	}
 	return (split);
 }
+/*
+int main(void)
+{
+    char s[] = "Hola,que,este,es,un,ejemplo";
+    char c = ',';
 
+    char **split = ft_split(s, c);
+    if (split == NULL)
+    {
+        printf("NULL\n");
+        return (0);
+    }
+
+    int i = 0;
+    while (split[i] != NULL)
+    {
+        printf("%s\n", split[i]);
+        i++;
+    }
+    if (split != NULL)
+    {
+        int i = 0;
+        while (split[i] != NULL)
+        {
+            free(split[i]);
+            i++;
+        }
+        free(split);
+    }
+    return 0;
+}*/
