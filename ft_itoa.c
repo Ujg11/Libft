@@ -15,7 +15,7 @@
 
 static size_t	len_str(int n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (n < 0)
@@ -34,7 +34,7 @@ static size_t	len_str(int n)
 static char	*res_str_pos(char *str, int n, size_t len)
 {
 	size_t	i;
-	int	num;
+	int		num;
 
 	i = 0;
 	num = 0;
@@ -54,7 +54,7 @@ static char	*res_str_pos(char *str, int n, size_t len)
 static char	*res_str_neg(char *str, int n, size_t len)
 {
 	size_t	i;
-	int	num;
+	int		num;
 
 	i = 0;
 	num = 0;
@@ -96,11 +96,11 @@ char	*ft_itoa(int n)
 		str = res_str_neg(str, n, len);
 	return (str);
 }
-
+/*
 int main(void)
 {
 	int n = -5671657;
 	char *str = ft_itoa(n);
 	printf("Resultat = %s", str);
 	return (0);
-}
+}*/
