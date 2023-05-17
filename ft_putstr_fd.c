@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,16 +11,18 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 #include <stdio.h>
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-	{
-		(*f)(i, s);
-		i++;
-	}
+    write(fd, s, ft_strlen(s));
 }
+/*
+int main(void)
+{
+    int fd = 1;
+    char s[] = "Hola que tal, com estas";
+    ft_putstr_fd(s, fd);
+    return (0);
+}*/

@@ -1,51 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/10 11:40:44 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/05/16 10:42:47 by ojimenez         ###   ########.fr       */
+/*   Created: 2023/05/16 15:27:51 by ojimenez          #+#    #+#             */
+/*   Updated: 2023/05/16 16:02:20 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 #include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*str;
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	str = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		str[i] = s2[j];
-		i++;
-		j++;
-	}
-	str[i] = '\0';
-	return (str);
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }
 /*
 int main(void)
 {
-	char const s1[] = "Hola ";
-	char const s2[] = "que tal estas?";
-	char *res;
-
-	res = ft_strjoin(s1, s2);
-	printf("Resultat = %s\n", res);
+	int fd = 1;
+	char s[] = "Hola que tal estas";
+	ft_putendl_fd(s, fd);
 	return (0);
 }*/
