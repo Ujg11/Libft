@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 15:27:51 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/05/19 16:32:41 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/05/19 17:00:54 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	str = (char *)s;
 	cont = cont_words(str, c);
-	split = malloc((cont + 1) * sizeof(char *));
+	split = (char **)malloc((cont + 1) * sizeof(char *));
 	if (!split)
 		return (NULL);
 	split = intro_words(split, str, c);
@@ -109,8 +109,8 @@ char	**ft_split(char const *s, char c)
 /*
 int main(void)
 {
-    char s[] = "Hola,que,este,es,un,ejemplo";
-    char c = ',';
+    char s[] = "xxxxxxxxxhexllo!";
+    char c = 'x';
 
     char **split = ft_split(s, c);
     if (split == NULL)
