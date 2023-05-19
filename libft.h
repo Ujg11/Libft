@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:07:10 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/05/16 11:58:30 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/05/19 12:47:12 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 # include <unistd.h>
 # include <errno.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
-void			*content;
-struct s_list	*next;
+	void			*content;
+	struct s_list	*next;
 }				t_list;
 
 int		ft_isalpha(int c);
@@ -57,6 +57,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
 //Part Bonus
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);

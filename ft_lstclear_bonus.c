@@ -6,7 +6,7 @@
 /*   By: ojimenez <ojimenez@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 13:44:05 by ojimenez          #+#    #+#             */
-/*   Updated: 2023/05/18 13:44:05 by ojimenez         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:33:16 by ojimenez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,14 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*l;
+	t_list	**l;
 	t_list	*next;
 
-	l = *lst;
-	if (!lst || !*lst || !del)
+	l = lst;
+	while (*l)
 	{
-		return ;
-	}
-	while (l)
-	{
-		next = l->next;
-		ft_lstdelone(l, del);
-		l = next;
+		next = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = next;
 	}
 }
-
